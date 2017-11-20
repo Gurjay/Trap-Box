@@ -1,0 +1,19 @@
+更新代码
+git pull
+git submodule update
+
+提交代码
+先cd 到各个子项目中，分别pull、commit、push
+最后在根目录pull、commit、push
+
+熟练后可以使用git submodule foreach 命令，意思是将foreach后的命令在各个子项目下分别执行。
+
+在版本接收后，我会再将老项目的代码向新项目中merge一次；如开发本地仍有未提交的代码，请自行进行merge
+
+原webportal的public下的app、images、framework这3个文件夹里的内容，被分别提取出来成为了3个git子项目，然后通过submodule的方式加载在新的webportal项目对应文件夹下。
+
+对于webportal的开发者来说，目录结构没有任何变化，但需要注意处于不同子项目或父项目的代码，需要分别进行提交；当子项目提交后，无论父项目有无修改，均会产生一个修改（关联的子项目的提交版本变了）。
+
+对于新的helpdesk，加载了webportal-images和wenportal-framework两个子项目，也就意味着当framework中再有改动时，只需执行下git submodule update --remote即可。
+
+对于未来的企业版的webportal和helpdesk，将使用同样的方法加载相关的子项目，区别性的代码在其他目录中完成。
